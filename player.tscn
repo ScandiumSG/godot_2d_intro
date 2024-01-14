@@ -37,6 +37,7 @@ height = 70.0
 
 [node name="player" type="Area2D"]
 script = ExtResource("1_avtxt")
+speed = 350
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
