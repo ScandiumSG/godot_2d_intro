@@ -25,6 +25,9 @@ public partial class main : Node
 		GetNode<Timer>("MobTimer").Stop();
 		GetNode<Timer>("ScoreTimer").Stop();
 		GetNode<HUD>("HUD").ShowGameOver();
+		// Stop background music, play deathsound
+		GetNode<AudioStreamPlayer>("Music").Stop();
+		GetNode<AudioStreamPlayer>("DeathSound").Play();
 	}
 	
 	public void new_game()
