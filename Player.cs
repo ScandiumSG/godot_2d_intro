@@ -62,5 +62,19 @@ public partial class Player : Area2D
 			y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
 		);
 		
+		// Change animation used depending on the movement vector
+		if (velocity.X != 0) // Vertical movement
+		{
+			animatedSprite2D.Animation = "walk";
+			
+			// Change animation direction either horisontally or vertically
+			animatedSprite2D.FlipV = false; // Method to flip the animated vertically
+			animatedSprite2D.FlipH = velocity.X < 0;
+		} 
+		else if (velocity.Y != 0) // Horisontal movement
+		{
+			animatedSprite2D.Animation = "up";
+			animatedSprite2D.FlipV = velocity.Y > 0;
+		}
 	}
 }
