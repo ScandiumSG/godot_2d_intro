@@ -43,6 +43,8 @@ public partial class main : Node
 		var hud = GetNode<HUD>("HUD");
 		hud.UpdateScore(_score);
 		hud.ShowMessage("Get Ready!");
+		
+		GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 	}
 	
 	private void OnScoreTimerTimeout()
