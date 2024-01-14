@@ -15,6 +15,14 @@ point_count = 5
 script = ExtResource("1_4ch61")
 MobScene = ExtResource("2_i73of")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.864183, 0.982551, 0.616)
+
 [node name="Player" parent="." instance=ExtResource("1_00smp")]
 position = Vector2(224, 320)
 speed = 600
