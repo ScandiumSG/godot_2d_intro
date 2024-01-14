@@ -7,6 +7,8 @@ public partial class Player : Area2D
 	public int speed { get; set; } = 500; // Speed of Player object (pixels/sec)
 	public Vector2 ScreenSize; // Game window size
 	
+	[Signal] // Defined custom "signal"
+	public delegate void HitEventHandler();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -76,5 +78,22 @@ public partial class Player : Area2D
 			animatedSprite2D.Animation = "up";
 			animatedSprite2D.FlipV = velocity.Y > 0;
 		}
+	}
+
+
+
+	private void _on_body_entered(Node2D body)
+	{
+		Hide(); // Remove the player object on collision
+		EmitSignal(SignalName.Hit);
+		// Must be deferred as we can't change physics properties on a physics callback.
+		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+	}
+	
+	public void Start(Vector2 position)
+	{
+		Position = position;
+		Show();
+		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 }
